@@ -1,0 +1,6 @@
+{
+  "name": "CNAP Skills & Vocational Academy",
+  "description": "Comprehensive skill development, degree programs, and Learn-Work-Earn academy replica with audience portals for students, teachers, and admission centers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
