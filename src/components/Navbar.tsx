@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmission, onOpenProposal 
             <div className="flex flex-col">
               <div className="text-lg sm:text-xl font-black tracking-tight text-white flex items-center gap-1.5 leading-none">
                 <span></span>
-                <span className="text-cyan-300 font-light text-base tracking-normal">Academy</span>
+                <span className="text-cyan-300 font-dark text-base tracking-normal">Academy</span>
               </div>
               <div className="text-[9px] sm:text-[10px] text-blue-200/85 font-semibold tracking-wider uppercase mt-1">
                 Skills · Degrees · Placement
