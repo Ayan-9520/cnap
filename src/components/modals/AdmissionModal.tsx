@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, Send, GraduationCap, ShieldCheck } from 'lucide-react';
 import { COURSES_DATA } from '../../data/courses';
+import { useToast } from '../../context/ToastContext';
 
 interface AdmissionModalProps {
   isOpen: boolean;
@@ -13,6 +14,7 @@ export const AdmissionModal: React.FC<AdmissionModalProps> = ({
   onClose,
   preselectedCourseId,
 }) => {
+  const { success } = useToast();
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -33,6 +35,14 @@ export const AdmissionModal: React.FC<AdmissionModalProps> = ({
     e.preventDefault();
     const ref = `CNAP-ADM-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
     setSubmittedRef(ref);
+
+    const selectedCourse = COURSES_DATA.find((c) => c.id === formData.courseId);
+    const courseTitle = selectedCourse ? selectedCourse.title : 'Selected Track';
+
+    success(
+      'Admission Application Submitted!',
+      `Provisional Ref #${ref} generated for ${formData.fullName} (${courseTitle}). Our counseling team will contact you on ${formData.phone}.`
+    );
   };
 
   const handleResetAndClose = () => {

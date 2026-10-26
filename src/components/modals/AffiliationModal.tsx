@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, Send, Building2 } from 'lucide-react';
 import { CONTACT_INFO } from '../../data/leadership';
+import { useToast } from '../../context/ToastContext';
 
 interface AffiliationModalProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface AffiliationModalProps {
 }
 
 export const AffiliationModal: React.FC<AffiliationModalProps> = ({ isOpen, onClose }) => {
+  const { success } = useToast();
   const [formData, setFormData] = useState({
     institutionName: '',
     contactPerson: '',
@@ -27,6 +29,11 @@ export const AffiliationModal: React.FC<AffiliationModalProps> = ({ isOpen, onCl
     e.preventDefault();
     const ref = `CNAP-AFF-${Math.floor(10000 + Math.random() * 90000)}`;
     setSubmittedRef(ref);
+
+    success(
+      'Affiliation Request Received!',
+      `Partner Ref #${ref} created for ${formData.institutionName || 'your center'}. Regional partnership team will review infrastructure.`
+    );
   };
 
   const handleReset = () => {

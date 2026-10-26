@@ -23,15 +23,15 @@ export const LeadershipSection: React.FC = () => {
           {LEADERSHIP_TEAM.map((member, idx) => (
             <div
               key={idx}
-              className="bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col justify-between hover:border-slate-300 hover:bg-white hover:shadow-xs transition-all"
+              className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-5 flex flex-col justify-between hover:border-blue-300 hover:bg-white hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
             >
               <div>
-                {/* Clean avatar initials */}
-                <div className="w-12 h-12 rounded-xl bg-[#0e3c6a] text-white flex items-center justify-center font-bold text-base mb-4 shadow-2xs">
+                {/* Clean avatar initials with group hover glow */}
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0e3c6a] to-[#082b4d] text-white flex items-center justify-center font-bold text-base mb-4 shadow-sm group-hover:scale-105 group-hover:shadow-blue-900/20 transition-all duration-300">
                   {member.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
                 </div>
 
-                <h3 className="text-sm font-bold text-slate-900 mb-0.5">
+                <h3 className="text-sm font-bold text-slate-900 mb-0.5 group-hover:text-[#0e3c6a] transition-colors">
                   {member.name}
                 </h3>
 

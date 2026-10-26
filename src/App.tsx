@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { AudienceSwitcher, AudienceType } from './components/AudienceSwitcher';
 import { Hero } from './components/Hero';
@@ -24,7 +24,7 @@ import { AffiliationModal } from './components/modals/AffiliationModal';
 import { TrainerModal } from './components/modals/TrainerModal';
 import { CourseDetailModal } from './components/modals/CourseDetailModal';
 import { ProposalModal } from './components/modals/ProposalModal';
-import { PdfExportModal } from './components/PdfExportModal';
+import { AdminDownloadModal } from './components/modals/AdminDownloadModal';
 import { Course } from './data/courses';
 
 export default function App() {
@@ -36,8 +36,33 @@ export default function App() {
   const [isAffiliationOpen, setIsAffiliationOpen] = useState(false);
   const [isTrainerModalOpen, setIsTrainerModalOpen] = useState(false);
   const [isProposalModalOpen, setIsProposalModalOpen] = useState(false);
-  const [isPdfExportOpen, setIsPdfExportOpen] = useState(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
   const [detailCourse, setDetailCourse] = useState<Course | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Secret Admin Hotkey: Ctrl+Shift+A or Alt+A
+      if ((e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') || (e.altKey && e.key.toLowerCase() === 'a')) {
+        e.preventDefault();
+        setIsAdminModalOpen(true);
+      }
+    };
+
+    const handleHash = () => {
+      if (window.location.hash === '#admin-download' || window.location.hash === '#admin') {
+        setIsAdminModalOpen(true);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('hashchange', handleHash);
+    };
+  }, []);
 
   const handleOpenAdmission = (courseId?: string) => {
     setSelectedCourseForAdmission(courseId);
@@ -59,12 +84,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-[#0e3c6a] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#fafbfd] text-slate-900 selection:bg-[#0e3c6a] selection:text-white antialiased">
       {/* 3-Zone Top Navigation Bar */}
       <Navbar
         onOpenAdmission={() => handleOpenAdmission()}
         onOpenProposal={() => setIsProposalModalOpen(true)}
-        onOpenPdfExport={() => setIsPdfExportOpen(true)}
       />
 
       {/* Audience Personalization Context Strip */}
@@ -111,7 +135,7 @@ export default function App() {
           onOpenAdmission={handleOpenAdmission}
         />
 
-        {/* 2027–2030 Council Proposal & Roadmap */}
+        {/* 2027–2030 Council Strategic Roadmap */}
         <ProposalRoadmap
           onOpenProposal={() => setIsProposalModalOpen(true)}
         />
@@ -131,8 +155,11 @@ export default function App() {
         <ContactSection />
       </main>
 
-      {/* Compliant Footer */}
-      <Footer />
+      {/* Compliant Executive Footer */}
+      <Footer
+        onOpenProposal={() => setIsProposalModalOpen(true)}
+        onOpenAdmin={() => setIsAdminModalOpen(true)}
+      />
 
       {/* Modal Dialogs */}
       <AdmissionModal
@@ -157,17 +184,17 @@ export default function App() {
         onOpenAdmission={handleOpenAdmission}
       />
 
+      {/* Interactive Council Strategic Masterplan Modal */}
       <ProposalModal
         isOpen={isProposalModalOpen}
         onClose={() => setIsProposalModalOpen(false)}
         onOpenAdmission={() => handleOpenAdmission()}
-        onOpenPdfExport={() => setIsPdfExportOpen(true)}
       />
 
-      {/* Same-Color CNAP Official Proposal PDF Modal */}
-      <PdfExportModal
-        isOpen={isPdfExportOpen}
-        onClose={() => setIsPdfExportOpen(false)}
+      {/* Secret Admin Only PDF Download Console */}
+      <AdminDownloadModal
+        isOpen={isAdminModalOpen}
+        onClose={() => setIsAdminModalOpen(false)}
       />
     </div>
   );

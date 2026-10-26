@@ -26,21 +26,12 @@ export const ProposalRoadmap: React.FC<ProposalRoadmapProps> = ({ onOpenProposal
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
-            <a
-              href="/assets/aistudio/Ladli_Ju_Skill_Development_Proposal_Powerful_21b4d8e2.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2.5 text-xs font-bold text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-lg transition-colors flex items-center gap-2 shadow-2xs"
-            >
-              <Download className="w-3.5 h-3.5 text-[#0e3c6a]" />
-              <span>Download Proposal PDF</span>
-            </a>
             <button
               onClick={onOpenProposal}
-              className="px-4 py-2.5 text-xs font-bold text-white bg-[#0e3c6a] hover:bg-[#0a2e52] rounded-lg transition-colors flex items-center gap-2 shadow-2xs cursor-pointer"
+              className="px-5 py-3 text-xs font-bold text-white bg-gradient-to-r from-[#0e3c6a] to-[#082847] hover:from-[#0a2e52] hover:to-[#061e36] active:scale-[0.98] rounded-xl transition-all flex items-center gap-2.5 shadow-md hover:shadow-blue-900/20 cursor-pointer"
             >
-              <FileText className="w-3.5 h-3.5" />
-              <span>Interactive Viewer</span>
+              <FileText className="w-4 h-4 text-amber-300" />
+              <span>Explore Council Strategic Dossier</span>
             </button>
           </div>
         </div>
@@ -311,6 +302,29 @@ export const ProposalRoadmap: React.FC<ProposalRoadmapProps> = ({ onOpenProposal
               <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200/80">
                 <span className="font-bold text-[#0e3c6a]">06.</span> Monitor completion, employment & enterprise
               </div>
+            </div>
+          </div>
+
+          {/* Institutional Partnership Spotlight */}
+          <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-[#0e3c6a] via-[#092b4d] to-[#061e36] text-white flex flex-col md:flex-row items-center justify-between gap-6 border border-blue-400/20 shadow-xl">
+            <div className="space-y-1.5 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">
+                <span>Council Masterplan 2027–2030</span>
+              </div>
+              <h3 className="text-lg font-bold text-white">
+                Partner with CNAP & Ladli Ju Welfare Trust for District Rollouts
+              </h3>
+              <p className="text-xs text-blue-200/90 max-w-xl">
+                Structured frameworks for Autonomous Councils, state departments, polytechnics, and higher education institutes to deploy NSQF-aligned skills and UGC-linked degree programs.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <button
+                onClick={onOpenProposal}
+                className="px-5 py-3 text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-amber-300 hover:from-amber-300 hover:to-amber-200 rounded-xl transition-all shadow-md active:scale-[0.98] cursor-pointer"
+              >
+                View 10 Council Strategic Goals
+              </button>
             </div>
           </div>
         </div>

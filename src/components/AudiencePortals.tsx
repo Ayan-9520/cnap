@@ -36,10 +36,10 @@ export const AudiencePortals: React.FC<AudiencePortalsProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {/* Card 1: Students */}
           <div
-            className={`rounded-2xl border p-6 sm:p-8 flex flex-col justify-between transition-all ${
+            className={`rounded-2xl border p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl ${
               currentAudience === 'student'
-                ? 'border-[#0e3c6a] ring-2 ring-[#0e3c6a]/15 bg-blue-50/20 shadow-md'
-                : 'border-slate-200 bg-white hover:border-slate-300'
+                ? 'border-[#0e3c6a] ring-2 ring-[#0e3c6a]/20 bg-blue-50/30 shadow-lg'
+                : 'border-slate-200/90 bg-white hover:border-blue-300 shadow-xs'
             }`}
           >
             <div>
@@ -92,10 +92,10 @@ export const AudiencePortals: React.FC<AudiencePortalsProps> = ({
 
           {/* Card 2: Teachers & Trainers */}
           <div
-            className={`rounded-2xl border p-6 sm:p-8 flex flex-col justify-between transition-all ${
+            className={`rounded-2xl border p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl ${
               currentAudience === 'teacher'
-                ? 'border-[#0e3c6a] ring-2 ring-[#0e3c6a]/15 bg-blue-50/20 shadow-md'
-                : 'border-slate-200 bg-white hover:border-slate-300'
+                ? 'border-[#0e3c6a] ring-2 ring-[#0e3c6a]/20 bg-blue-50/30 shadow-lg'
+                : 'border-slate-200/90 bg-white hover:border-blue-300 shadow-xs'
             }`}
           >
             <div>
@@ -148,10 +148,10 @@ export const AudiencePortals: React.FC<AudiencePortalsProps> = ({
 
           {/* Card 3: Admission Centers & Institutional Partners */}
           <div
-            className={`rounded-2xl border p-6 sm:p-8 flex flex-col justify-between transition-all ${
+            className={`rounded-2xl border p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl ${
               currentAudience === 'center'
-                ? 'border-[#0e3c6a] ring-2 ring-[#0e3c6a]/15 bg-blue-50/20 shadow-md'
-                : 'border-slate-200 bg-white hover:border-slate-300'
+                ? 'border-[#0e3c6a] ring-2 ring-[#0e3c6a]/20 bg-blue-50/30 shadow-lg'
+                : 'border-slate-200/90 bg-white hover:border-blue-300 shadow-xs'
             }`}
           >
             <div>

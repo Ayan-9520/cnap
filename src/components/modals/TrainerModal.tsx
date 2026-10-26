@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, Send, Briefcase, Award } from 'lucide-react';
+import { useToast } from '../../context/ToastContext';
 
 interface TrainerModalProps {
   isOpen: boolean;
@@ -7,6 +8,7 @@ interface TrainerModalProps {
 }
 
 export const TrainerModal: React.FC<TrainerModalProps> = ({ isOpen, onClose }) => {
+  const { success } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -26,6 +28,11 @@ export const TrainerModal: React.FC<TrainerModalProps> = ({ isOpen, onClose }) =
     e.preventDefault();
     const ref = `CNAP-FAC-${Math.floor(1000 + Math.random() * 9000)}`;
     setSubmittedRef(ref);
+
+    success(
+      'Faculty Profile Empaneled!',
+      `Dossier Ref #${ref} registered for Prof. ${formData.name}. Academic Advisory Board will evaluate credentials.`
+    );
   };
 
   const handleReset = () => {
